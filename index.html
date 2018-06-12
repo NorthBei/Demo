@@ -14,23 +14,36 @@
   margin-left:0;
   margin-right:0;
 }
-.content-title-wrapper{
-  font-family: HiraginoSans-W3;
-  margin-bottom:115px;
-  margin-top: 140px;
+
+.section-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height:100vh;
+  text-align: center;
+  /*border:1px solid red;*/
+  padding: 100px 0;
+  box-sizing: border-box;
 }
-.content-block-wrapper{
-  /*margin-bottom:140px;*/
+
+.section-title-wrapper{
+  margin-bottom:40px;
 }
-.content-title{
+
+.section-title-wrapper .title{
   font-size: 36px;
   margin-bottom: 0;
+  font-family: .SFNSDisplay;
 }
-.content-subtitle{
+.section-title-wrapper .subtitle{
   font-size: 20px;
   width:250px;
   border-top: 2px solid;
+  margin: 0 auto;
+  font-family: HiraginoSans-W3;
 }
+
 .contact-info{
   margin-bottom:50px;
 }
@@ -39,11 +52,11 @@
   height: 90px;
   margin-bottom:20px;
 }
-@media only screen and (max-width: 600px) {
+/*@media only screen and (max-width: 600px) {
     .content-block-wrapper {
         margin-bottom:40px;
     }
-}
+}*/
 
 .group-member img{
   width:100%;
@@ -138,9 +151,12 @@
   });
 
   var waypoint = new Waypoint({
-    element: document.getElementById('corporation-sample-title'),
+    element: document.getElementById('corporation-list'),
     handler: function() {
       $('.scrollbar').addClass('open');
+    },
+    offset: function() {
+      return (window.innerHeight/2-this.element.clientHeight/2);
     }
   })
 });
@@ -256,23 +272,103 @@ $("#nav-phone-cover").click(function(){
         nav.animate({height:h},300).animate({width:w},300);
     }
     isCollapse = !isCollapse;
-});</script><div class="container" style="min-height:100vh;"><div id="logo-ainm"><div id="bottom-logo"><img src="./images/SQR-20338e8e01c246c19ef715aec067dc9d.png" alt="" id="sqr-big-logo"></div><div id="pre-logo"></div></div><div class="row"><div class="col-12 d-flex align-items-center flex-column"><img class="mb-4" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iNTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCA1MS42MzRWLjExNGgzNS43OTJ2NTEuNTJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAuMjUyKSI+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZD0iTTE3Ljg5NiAzLjA0NEM5LjY1IDMuMDQ0IDIuOTQgOS43MzMgMi45NCAxNy45NTR2MTUuODRjMCA4LjIyMSA2LjcxIDE0LjkxIDE0Ljk1NyAxNC45MSA4LjI0OCAwIDE0Ljk1OC02LjY4OSAxNC45NTgtMTQuOTF2LTE1Ljg0YzAtOC4yMjEtNi43MS0xNC45MS0xNC45NTgtMTQuOTFtMCA0OC41OUM4LjAyOCA1MS42MzQgMCA0My42MyAwIDMzLjc5NHYtMTUuODRDMCA4LjExNyA4LjAyOC4xMTQgMTcuODk2LjExNHMxNy44OTYgOC4wMDMgMTcuODk2IDE3Ljg0djE1Ljg0YzAgOS44MzctOC4wMjggMTcuODQtMTcuODk2IDE3Ljg0IiBmaWxsPSIjMDAwIiBtYXNrPSJ1cmwoI2IpIi8+PC9nPjxwYXRoIGQ9Ik0xNy44OTYgMTkuNTA2Yy0uODExIDAtMS40Ny0uNjU2LTEuNDctMS40NjV2LTcuNjA5YzAtLjgwOS42NTktMS40NjUgMS40Ny0xLjQ2NS44MTIgMCAxLjQ3LjY1NiAxLjQ3IDEuNDY1djcuNjFjMCAuODA4LS42NTggMS40NjQtMS40NyAxLjQ2NCIgZmlsbD0iIzAwMCIvPjwvZz48L3N2Zz4=" alt="" id="mouse"><div id="mouse-indicator"><div class="arrow mb-3"></div><div class="arrow mb-3"></div><div class="arrow mb-3"></div></div></div></div><script>var op = lottie.loadAnimation({
+});</script><div class="container" style="min-height:100vh;"><div id="opening-anim"></div><div id="logo-anim"><div id="bottom-logo"><img src="./images/SQR-20338e8e01c246c19ef715aec067dc9d.png" alt="" id="sqr-big-logo"><div id="qwe"><img class="mb-5" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYiIGhlaWdodD0iNTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxkZWZzPjxwYXRoIGlkPSJhIiBkPSJNMCA1MS42MzRWLjExNGgzNS43OTJ2NTEuNTJ6Ii8+PC9kZWZzPjxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAuMjUyKSI+PG1hc2sgaWQ9ImIiIGZpbGw9IiNmZmYiPjx1c2UgeGxpbms6aHJlZj0iI2EiLz48L21hc2s+PHBhdGggZD0iTTE3Ljg5NiAzLjA0NEM5LjY1IDMuMDQ0IDIuOTQgOS43MzMgMi45NCAxNy45NTR2MTUuODRjMCA4LjIyMSA2LjcxIDE0LjkxIDE0Ljk1NyAxNC45MSA4LjI0OCAwIDE0Ljk1OC02LjY4OSAxNC45NTgtMTQuOTF2LTE1Ljg0YzAtOC4yMjEtNi43MS0xNC45MS0xNC45NTgtMTQuOTFtMCA0OC41OUM4LjAyOCA1MS42MzQgMCA0My42MyAwIDMzLjc5NHYtMTUuODRDMCA4LjExNyA4LjAyOC4xMTQgMTcuODk2LjExNHMxNy44OTYgOC4wMDMgMTcuODk2IDE3Ljg0djE1Ljg0YzAgOS44MzctOC4wMjggMTcuODQtMTcuODk2IDE3Ljg0IiBmaWxsPSIjMDAwIiBtYXNrPSJ1cmwoI2IpIi8+PC9nPjxwYXRoIGQ9Ik0xNy44OTYgMTkuNTA2Yy0uODExIDAtMS40Ny0uNjU2LTEuNDctMS40NjV2LTcuNjA5YzAtLjgwOS42NTktMS40NjUgMS40Ny0xLjQ2NS44MTIgMCAxLjQ3LjY1NiAxLjQ3IDEuNDY1djcuNjFjMCAuODA4LS42NTggMS40NjQtMS40NyAxLjQ2NCIgZmlsbD0iIzAwMCIvPjwvZz48L3N2Zz4=" alt="" id="mouse"><div id="mouse-indicator"><div class="arrow mb-3"></div><div class="arrow mb-3"></div><div class="arrow mb-3"></div></div></div></div><div id="pre-logo"></div></div><script>var isPhone = window.innerWidth <= 576 ? true : false;
+var isPortrait = isPhone || window.innerWidth/window.innerHeight < 1440/1024 ? true : false;
+var pathPostfix = isPortrait ? '-RWD' : '';
+
+var op = lottie.loadAnimation({
   container: document.getElementById('pre-logo'),
     renderer: 'svg',
     loop: false,
     autoplay: true,
-    path: './lottie/OP/data.json'
+    path: './lottie/OP'+pathPostfix+'/data.json'
 });
 
 op.addEventListener('data_ready',function(){
-  $('#bottom-logo').delay(3700).fadeIn(300,function(){
+  if(isPortrait){$('#pre-logo').addClass('phone')}
+  $('#bottom-logo').delay(3500).animate({opacity:1},300,function(){
     $("#pre-logo,#bottom-logo").addClass('z-index-back');
+    $(this).addClass('d-flex');
   });
-});</script><style>#logo-ainm{
+});
+
+var opening = lottie.loadAnimation({
+    container: document.getElementById('opening-anim'),
+    renderer: 'svg',
+    loop: false,
+    prerender: true,
+    autoplay: false,
+    path: './lottie/BRAND/data.json',
+});
+
+opening.addEventListener('data_ready',function(){
+  console.log('ready');
+  $('body').css('overflow','hidden');
+  attachScroll(opening, document.getElementById('opening-anim'), 50);
+});
+
+opening.addEventListener('complete',function(){
+  console.log('com');
+  $('#opening-anim').fadeOut();
+  $('body').css('overflow-y','visible');
+});
+
+
+//animLoaded(opening);
+
+//- function animLoaded(anim) {
+//-     if (!anim.isLoaded) {
+//-         setTimeout("animLoaded();", 1000);
+//-         return;
+//-     } else {
+//-         attachScroll(anim, document.getElementById('opening-anim'), 50);
+//-     }
+//- }
+function attachScroll(anim, contentid, speed) {
+    var val = 0,
+       totalDuration = anim.totalFrames/anim.frameRate*1000;
+
+    if (contentid.addEventListener) {
+        contentid.addEventListener("mousewheel", MouseWheelHandler, false);
+        contentid.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+    }else{
+        contentid.attachEvent("onmousewheel", MouseWheelHandler);
+    }
+
+    function MouseWheelHandler(e) {
+        var e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        if (delta < 0) {
+            if (val < totalDuration) {
+                val += (Math.abs(delta))*speed;
+            }
+        }else {
+            if (val > 0) {
+                val -= (Math.abs(delta))*speed;
+            }
+        }
+
+        anim.goToAndStop(val);
+    }
+}</script><style>#opening-anim{
+  display:none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100vw;
+  height: auto;
+  z-index: 100;
+  background: white;
+}
+#logo-anim{
   margin-bottom:100vh;
 }
 #bottom-logo{
-  display:none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity:0;
 }
 #bottom-logo,#pre-logo{
   position: absolute;
@@ -282,13 +378,15 @@ op.addEventListener('data_ready',function(){
   height: 100vh;
   transition: all 0.1s ease-in;
   overflow:hidden;
+  z-index:60;
 }
 #pre-logo>svg{
-  height:100vh !important;
-  width:auto !important;
-
   width: 100vw !important;
   height: auto !important;
+}
+#pre-logo.phone>svg{
+  height:100vh !important;
+  width:auto !important;
 }
 #sqr-big-logo,#pre-logo>svg{
   position: absolute;
@@ -297,8 +395,12 @@ op.addEventListener('data_ready',function(){
   transform: translate(-50%,-50%);
 }
 #sqr-big-logo{
-  max-width: 850px;
+  max-width: 700px;
   width: 90%;
+}
+
+#qwe{
+  transform:scale(0.7);
 }
 
 #mouse{
@@ -310,7 +412,7 @@ op.addEventListener('data_ready',function(){
 }
 
 #mouse-indicator .arrow{
-  left: -3px;
+  left: 6px;
   background: black;
 }
 
@@ -318,12 +420,10 @@ op.addEventListener('data_ready',function(){
     from {transform: translateY(0);}
     to {transform: translateY(10px);}
 }
-</style><div class="row content-title-wrapper d-flex align-items-center flex-column text-center" id="about"><h3 class="content-title">關於我們</h3><h4 class="content-subtitle">私たちについて</h4></div><div class="row content-block-wrapper" id="about-content"><div class="col-12 d-flex align-items-center flex-column"><div class="company-info d-flex align-items-center justify-content-center"><span class="company-intro">超酷炫！<br>廣告公司</span><svg width="162" height="158" xmlns="http://www.w3.org/2000/svg" id="about-dialog"><g fill="none" fill-rule="evenodd"><text font-family="NotoSansCJKtc-Black, Noto Sans CJK TC" font-size="7" font-weight="700" fill="#000" transform="translate(5 5)"><tspan x="49" y="68">超酷炫廣告公司</tspan></text><path stroke="#000" stroke-width="9" d="M50.74 129.559L55.823 148l11.73-15.173 34.285.704 31.022-11.356L157 78.733l-11.847-47.79-35.85-22.848L44.095 5 5 44.294l.39 51.313z"></path></g></svg></div><a class="mt-3 to_about" href="./about.html">更多關於我</a><div id="play_button"></div></div></div><style>#about{
-  margin-bottom:40px;
-}
-#about-content .company-info {
+
+</style><div class="row section-wrapper" id="about"><div class="section-title-wrapper"><h3 class="title">關於我們</h3><h4 class="subtitle">私たちについて</h4></div><div class="col-12 d-flex align-items-center flex-column" id="about-content"><div class="company-info d-flex align-items-center justify-content-center"><span class="company-intro">超酷炫！<br>廣告公司</span><svg width="162" height="158" xmlns="http://www.w3.org/2000/svg" id="about-dialog"><g fill="none" fill-rule="evenodd"><text font-family="NotoSansCJKtc-Black, Noto Sans CJK TC" font-size="7" font-weight="700" fill="#000" transform="translate(5 5)"><tspan x="49" y="68">超酷炫廣告公司</tspan></text><path stroke="#000" stroke-width="9" d="M50.74 129.559L55.823 148l11.73-15.173 34.285.704 31.022-11.356L157 78.733l-11.847-47.79-35.85-22.848L44.095 5 5 44.294l.39 51.313z"></path></g></svg></div><a class="mt-3 to_about" href="./about.html">更多關於我</a><div id="play_button"></div></div></div><style>#about-content .company-info {
   height: 164px;
-  transition: height 0.5s 0.8s;
+  transition: height 0.5s 0.5s;
   position: relative;
   width: 100%;
 }
@@ -332,10 +432,18 @@ op.addEventListener('data_ready',function(){
   height:400px;
 }
 
+#about-content .company-info #about-dialog text{
+  transition-delay:0.4s;
+}
+#about-content .company-info.ease-in #about-dialog text{
+  transition: all 0.7s;
+  fill:white;
+}
+
 #about-content .company-intro {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0);
   text-align: center;
   font-family: NotoSansCJKtc-Black;
   font-size: 98px;
@@ -344,13 +452,14 @@ op.addEventListener('data_ready',function(){
   height:254px;
   min-height:164px;/*same as #about-content .company-info height*/
   background: rgba(255,255,255,0.6);
-  transition: opacity 0.7s;
+  transition: all 0.4s;
   opacity: 0;
   z-index:-1;
 }
 
 #about-content .company-info.ease-in .company-intro{
-    transition-delay:0.6s;
+    transition-delay:0.4s;
+    transform: translateY(-50%) scale(1);
     opacity: 1;
     z-index:2;
 }
@@ -382,6 +491,7 @@ op.addEventListener('data_ready',function(){
 #play_button:after{
   content: '';
   position: absolute;
+  left: 0;
   width: 100%;
   height: 100%;
   background-image: repeating-linear-gradient( 114deg, black, black 1px, white 1px, white 5px);
@@ -404,15 +514,63 @@ op.addEventListener('data_ready',function(){
 $('#about-content .company-intro').mouseleave(function(){
   $('#about-content .company-info').removeClass('ease-in');
 });
-
-</script><div class="row content-title-wrapper d-flex align-items-center flex-column text-center"><h3 class="content-title">作品總集</h3><h4 class="content-subtitle">ワークスコレクション</h4></div><div class="row content-block-wrapper" id="cats"><div class="col-12 col-md-5"><div id="cat-left"></div>網站作品案例</div><div class="col-md-2 d-none d-md-flex" id="cat-center"><img src="./images/有虎斑-71819e907470707a71fb7ad733a3c894.png" alt=""></div><div class="col-12 col-md-5"><div id="cat-right"></div>影音作品案例</div></div><style>#cats{
+</script><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">作品總集</h3><h4 class="subtitle">ワークスコレクション</h4></div><div class="row content-block-wrapper" id="cats"><div class="col-12 col-md-5 d-flex flex-column justify-content-center"><div class="dialog-wrapper align-self-end"><img class="dialog small" src="./images/cat-left-desktop-242a045ae29e82cd17428b2430cbf830.png" alt=""><img class="dialog big" src="./images/cat-left-desktop-hover-88993098bdfd2daaca707a76b0a32567.png" alt=""></div><div id="cat-left"></div>網站作品案例</div><div class="col-md-2 d-none d-md-flex" id="cat-center"><img src="./images/有虎斑-71819e907470707a71fb7ad733a3c894.png" alt=""></div><div class="col-12 col-md-5 d-flex flex-column justify-content-center"><div class="dialog-wrapper align-self-start"><img class="dialog small" src="./images/cat-right-desktop-10b1f3f269b2e89a8e068e1061eedc95.png" alt=""><img class="dialog big" src="./images/cat-right-desktop-hover-1ecc2f20a1618ab72128a9176cd57895.png" alt=""></div><div id="cat-right"></div>影音作品案例</div></div></div><style>#cats{
   text-align:center;
 }
 #cat-center{
   justify-content: center;
   align-self: flex-end;
 }
-#cat-center>img{max-height: 17vw;}</style><script>var cat_anim_right = lottie.loadAnimation({
+#cat-center>img{
+  max-height: 187px;
+  height: 15vw;
+  margin-bottom: -40px;
+}
+
+.dialog-wrapper{
+  position: relative;
+  width: 60%;
+  height: 150px;
+  margin-bottom: -50px;
+}
+
+.dialog-wrapper.align-self-end .dialog{
+  right:0;
+}
+
+.dialog-wrapper.align-self-start .dialog{
+  left:0;
+}
+.dialog-wrapper .dialog{
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  transform: scale(1);
+  transition: all 0.2s;
+  transform-origin: left bottom;
+  cursor:pointer;
+}
+
+.dialog-wrapper .dialog.small{
+  height: 85%;
+  transition-delay: 0.2s;
+}
+
+.dialog-wrapper .dialog.big{
+  transform: scale(0);
+  transition-delay: 0s;
+}
+
+.dialog-wrapper:hover .dialog.small{
+  transform: scale(0);
+  transition-delay: 0s;
+}
+
+.dialog-wrapper:hover .dialog.big{
+  transform: scale(1);
+  transition-delay: 0.2s;
+}
+</style><script>var cat_anim_right = lottie.loadAnimation({
   container: document.getElementById('cat-right'),
     renderer: 'svg',
     loop: true,
@@ -427,7 +585,10 @@ var cat_anim_left = lottie.loadAnimation({
     autoplay: true,
     path: './lottie/render cat/data.json'
 });
-</script><div class="row content-title-wrapper d-flex align-items-center flex-column text-center" id="corporation-sample-title"><h3 class="content-title">合作案例</h3><h4 class="content-subtitle">協力ケース</h4></div><div class="row content-block-wrapper" id="corporation-sample"><div class="col-12"><div class="scrollbar scrollbar-left"><img src="./images/scrollbar-43c771ea4732e26c7f2f4e9d00b710f2.png" alt="" srcset=""></div><div id="corporation-list"><div class="corpor-list-page"><div class="corpor-list-col"><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div></div></div><div class="corpor-list-page"><div class="corpor-list-col"><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"></div><div class="corpor-logo-wrapper"></div><div class="corpor-logo-wrapper"></div></div></div></div><div class="scrollbar scrollbar-right"><img src="./images/scrollbar-43c771ea4732e26c7f2f4e9d00b710f2.png" alt="" srcset=""></div></div><style>.scrollbar {
+</script><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">合作案例</h3><h4 class="subtitle">協力ケース</h4></div><div class="row content-block-wrapper" id="corporation-sample"><div class="col-12"><div class="scrollbar scrollbar-left"><img src="./images/scrollbar-43c771ea4732e26c7f2f4e9d00b710f2.png" alt="" srcset=""></div><div id="corporation-list"><div class="corpor-list-page"><div class="corpor-list-col"><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div></div></div><div class="corpor-list-page"><div class="corpor-list-col"><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"><div class="corpor-logo"><img src="./images/co-logo-2931d4c2e828b9cf84b4e16fc27c35e3.png" alt=""></div></div><div class="corpor-logo-wrapper"></div><div class="corpor-logo-wrapper"></div><div class="corpor-logo-wrapper"></div></div></div></div><div class="scrollbar scrollbar-right"><img src="./images/scrollbar-43c771ea4732e26c7f2f4e9d00b710f2.png" alt="" srcset=""></div></div></div><style>#corporation-sample {
+  width:100%;
+}
+.scrollbar {
     position: absolute;
     height: 100%;
     display: flex;
@@ -542,7 +703,7 @@ var cat_anim_left = lottie.loadAnimation({
     margin: 0 10px;
   }
 }
-</style></div><div class="row content-title-wrapper d-flex align-items-center flex-column text-center"><h3 class="content-title">專業團隊</h3><h4 class="content-subtitle">プロフェッショナルチーム</h4></div><div class="row content-block-wrapper px-md-5"><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div></div><style>.cust-btn1{
+</style></div><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">專業團隊</h3><h4 class="subtitle">プロフェッショナルチーム</h4></div><div class="row content-block-wrapper px-md-5"><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member group-member-show col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div><div class="group-member col-xl-2 col-md-3 col-6 d-inline-flex flex-column align-items-center"><div class="member-photo-wrapper mb-3"><img src="./images/bing-50cd18d300a6f94269e854beeda8ab01.png"><img class="member-cat" src="./images/cover-企劃-6439badee5e7c95ef81085a0fbb9146c.png"></div><h6 class="member-name">遊戲BOY</h6><p class="my-0">戰鬥力</p><div class="group-member-star-rate mb-4 mb-md-5"><div class="star-empty"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div><div class="star-real"><span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span></div></div></div></div><style>.cust-btn1{
     padding: 12px 20px;
     border: 1px solid #979797;
     background: white;
@@ -575,7 +736,7 @@ var cat_anim_left = lottie.loadAnimation({
     .cust-btn1{
         margin:50px 0 65px;
     }
-}</style><div class="row"><div class="col-sm-12 d-flex justify-content-center align-items-center"> <div class="cust-btn1 d-md-none" id="show-more-btn"><svg width="26" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 13.28a3.977 3.977 0 0 1-3.968-3.967c0-2.187 1.785-3.984 3.968-3.984 2.19 0 3.975 1.797 3.975 3.984a3.978 3.978 0 0 1-3.975 3.968m-4.88-6.863c-.104-.85-.216-1.685-.291-2.535v-.035c0-.73.307-1.398.792-1.894a2.626 2.626 0 0 1 1.882-.778c.39 0 .771.076 1.09.23l.045.028c.347.153.652.382.89.668l.04.04 1.432 1.56a6.2 6.2 0 0 0-1-.082c-2.07 0-3.878 1.126-4.88 2.798m-2.419-.21c-.416 0-.805.084-1.161.237l.215-2.609v-.05c0-.263.104-.502.273-.668a.963.963 0 0 1 .673-.28c.264 0 .492.114.661.28a.924.924 0 0 1 .286.655v.054l.012.097v.029c.041.821.141 1.67.2 2.492a2.894 2.894 0 0 0-1.159-.238m.703 3.661l-.013.028a1.088 1.088 0 0 1-.69.273.967.967 0 0 1-.701-.3.984.984 0 0 1-.298-.703c0-.27.123-.53.292-.703h.006a.967.967 0 0 1 .701-.298c.28 0 .52.116.703.298a.932.932 0 0 1 .29.703.93.93 0 0 1-.29.702M10.85 4.05c-.085.793-.188 1.574-.279 2.368A5.677 5.677 0 0 0 5.685 3.62c-.335 0-.673.028-.992.081l1.431-1.56.04-.04c.236-.285.55-.514.89-.667l.041-.028c.335-.154.696-.23 1.093-.23.743 0 1.41.292 1.883.778.488.496.786 1.164.786 1.894 0 .076 0 .145-.006.202m-5.166 9.23a3.977 3.977 0 0 1-3.968-3.967c0-2.187 1.785-3.984 3.968-3.984 2.19 0 3.97 1.797 3.97 3.984a3.973 3.973 0 0 1-3.97 3.968m20.067-5.653h-.013c-.044-.153-.1-.292-.153-.445a5.493 5.493 0 0 0-1.169-1.81l-3.655-4.015-.029-.028A3.683 3.683 0 0 0 19.44.36l-.046-.018A3.74 3.74 0 0 0 17.82 0c-1.049 0-2.023.43-2.715 1.126-.291.308-.558.64-.74 1.023a2.119 2.119 0 0 0-1.347-.487c-.52 0-1.008.182-1.374.502a3.901 3.901 0 0 0-.74-1.038A3.818 3.818 0 0 0 8.188 0C7.625 0 7.095.12 6.61.342L6.569.36c-.502.222-.93.558-1.294.969l-.028.028-3.668 4.015a5.663 5.663 0 0 0-1.156 1.81c-.11.276-.194.543-.27.834v.007C.063 8.447 0 8.867 0 9.313c0 1.565.639 2.993 1.667 4.015a5.67 5.67 0 0 0 9.328-2.004 2.964 2.964 0 0 0 4.019.028c.32.828.833 1.58 1.488 2.17A5.678 5.678 0 0 0 20.317 15a5.672 5.672 0 0 0 4.016-1.672 5.733 5.733 0 0 0 1.657-3.586 6.373 6.373 0 0 0-.238-2.114" fill="#231815" fill-rule="evenodd"></path></svg>Show More</div></div></div><div class="row content-title-wrapper d-flex align-items-center flex-column text-center mb-5" id="calligraphy-sec"><h3 class="content-title">策略聯盟</h3><h4 class="content-subtitle">戦略的提携</h4></div><div class="calligraphy-react" id="calligraphy-top"><div class="fullwidth-rect"><div class="slant-rect"><div class="growth-rect"><img class="caligraphy" src="./images/共生-設計-531798056596038939038ab18616c5cc.png" alt="" srcset=""><img class="d-none d-sm-inline-block caligraphy" src="./images/奧創-傳媒-f75eab80b9065aea4111fd830dfc1fb9.png" alt="" srcset=""></div></div></div></div><div class="calligraphy-react d-block d-sm-none" id="calligraphy-bottom"><div class="fullwidth-rect"><div class="slant-rect"><div class="growth-rect"><img class="caligraphy" src="./images/奧創-傳媒-f75eab80b9065aea4111fd830dfc1fb9.png" alt="" srcset=""></div></div></div></div><style>body{
+}</style><div class="row"><div class="col-sm-12 d-flex justify-content-center align-items-center"> <div class="cust-btn1 d-md-none" id="show-more-btn"><svg width="26" height="15" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 13.28a3.977 3.977 0 0 1-3.968-3.967c0-2.187 1.785-3.984 3.968-3.984 2.19 0 3.975 1.797 3.975 3.984a3.978 3.978 0 0 1-3.975 3.968m-4.88-6.863c-.104-.85-.216-1.685-.291-2.535v-.035c0-.73.307-1.398.792-1.894a2.626 2.626 0 0 1 1.882-.778c.39 0 .771.076 1.09.23l.045.028c.347.153.652.382.89.668l.04.04 1.432 1.56a6.2 6.2 0 0 0-1-.082c-2.07 0-3.878 1.126-4.88 2.798m-2.419-.21c-.416 0-.805.084-1.161.237l.215-2.609v-.05c0-.263.104-.502.273-.668a.963.963 0 0 1 .673-.28c.264 0 .492.114.661.28a.924.924 0 0 1 .286.655v.054l.012.097v.029c.041.821.141 1.67.2 2.492a2.894 2.894 0 0 0-1.159-.238m.703 3.661l-.013.028a1.088 1.088 0 0 1-.69.273.967.967 0 0 1-.701-.3.984.984 0 0 1-.298-.703c0-.27.123-.53.292-.703h.006a.967.967 0 0 1 .701-.298c.28 0 .52.116.703.298a.932.932 0 0 1 .29.703.93.93 0 0 1-.29.702M10.85 4.05c-.085.793-.188 1.574-.279 2.368A5.677 5.677 0 0 0 5.685 3.62c-.335 0-.673.028-.992.081l1.431-1.56.04-.04c.236-.285.55-.514.89-.667l.041-.028c.335-.154.696-.23 1.093-.23.743 0 1.41.292 1.883.778.488.496.786 1.164.786 1.894 0 .076 0 .145-.006.202m-5.166 9.23a3.977 3.977 0 0 1-3.968-3.967c0-2.187 1.785-3.984 3.968-3.984 2.19 0 3.97 1.797 3.97 3.984a3.973 3.973 0 0 1-3.97 3.968m20.067-5.653h-.013c-.044-.153-.1-.292-.153-.445a5.493 5.493 0 0 0-1.169-1.81l-3.655-4.015-.029-.028A3.683 3.683 0 0 0 19.44.36l-.046-.018A3.74 3.74 0 0 0 17.82 0c-1.049 0-2.023.43-2.715 1.126-.291.308-.558.64-.74 1.023a2.119 2.119 0 0 0-1.347-.487c-.52 0-1.008.182-1.374.502a3.901 3.901 0 0 0-.74-1.038A3.818 3.818 0 0 0 8.188 0C7.625 0 7.095.12 6.61.342L6.569.36c-.502.222-.93.558-1.294.969l-.028.028-3.668 4.015a5.663 5.663 0 0 0-1.156 1.81c-.11.276-.194.543-.27.834v.007C.063 8.447 0 8.867 0 9.313c0 1.565.639 2.993 1.667 4.015a5.67 5.67 0 0 0 9.328-2.004 2.964 2.964 0 0 0 4.019.028c.32.828.833 1.58 1.488 2.17A5.678 5.678 0 0 0 20.317 15a5.672 5.672 0 0 0 4.016-1.672 5.733 5.733 0 0 0 1.657-3.586 6.373 6.373 0 0 0-.238-2.114" fill="#231815" fill-rule="evenodd"></path></svg>Show More</div></div></div></div><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">策略聯盟</h3><h4 class="subtitle">戦略的提携</h4></div><div class="calligraphy-react" id="calligraphy-top"><div class="fullwidth-rect"><div class="slant-rect"><div class="growth-rect"><img class="caligraphy" src="./images/共生-設計-531798056596038939038ab18616c5cc.png" alt="" srcset=""><img class="d-none d-sm-inline-block caligraphy" src="./images/奧創-傳媒-f75eab80b9065aea4111fd830dfc1fb9.png" alt="" srcset=""></div></div></div></div><div class="calligraphy-react d-block d-sm-none" id="calligraphy-bottom"><div class="fullwidth-rect"><div class="slant-rect"><div class="growth-rect"><img class="caligraphy" src="./images/奧創-傳媒-f75eab80b9065aea4111fd830dfc1fb9.png" alt="" srcset=""></div></div></div></div></div><style>body{
   overflow-x: hidden;
 }
 
@@ -639,7 +800,7 @@ var cat_anim_left = lottie.loadAnimation({
   }
 }
 </style><script>var calligraphTop = new Waypoint({
-  element: document.getElementById('calligraphy-sec'),
+  element: document.getElementById('calligraphy-top'),
   handler: function() {
     $('#calligraphy-top .growth-rect').addClass('grown');
   },
@@ -653,7 +814,7 @@ var calligraphyBottom = new Waypoint({
   },
   offset: '20%'
 });
-</script><div class="row content-title-wrapper d-flex align-items-center flex-column text-center"><h3 class="content-title">聯絡我們</h3><h4 class="content-subtitle">お問い合わせ</h4></div><div class="row content-block-wrapper d-flex justify-content-center"><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-phone-9c59d5d07b67751e46d609d8cd32b8e9.png"></div><p>TEL：+886-2-3393-1393</p></div><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-map-pin-13c0b2b4143eddb00567a8048925d0f4.png"></div><p>〒 台北市中正區金山北路1號12F</p><small>12F., No.1, Jinshan N. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</small></div><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-mail-a9244a2c6be53fb6fa0fe2dd19d14bd1.png"></div><p>Email：service@sqrhome.com</p></div></div></div><style>#footer{
+</script><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">聯絡我們</h3><h4 class="subtitle">お問い合わせ</h4></div><div class="row content-block-wrapper d-flex justify-content-center"><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-phone-9c59d5d07b67751e46d609d8cd32b8e9.png"></div><p>TEL：+886-2-3393-1393</p></div><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-map-pin-13c0b2b4143eddb00567a8048925d0f4.png"></div><p>〒 台北市中正區金山北路1號12F</p><small>12F., No.1, Jinshan N. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</small></div><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-mail-a9244a2c6be53fb6fa0fe2dd19d14bd1.png"></div><p>Email：service@sqrhome.com</p></div></div></div></div><style>#footer{
     margin-top: 80px;
     background:black;
     font-family: NotoSansCJKtc-Light;
