@@ -684,39 +684,34 @@ $('#about-content .company-intro').mouseleave(function(){
   });
 });
 
-$('#serve1-cover').hover(function(){
-  serverAnim['serve1'].setDirection(1);
-  serverAnim['serve1'].play();
+$('#serve1-cover,#serve3').hover(function(){
+  var name = ($(this).attr('id') === 'serve3')? 'serve3' : 'serve1';
+  serverAnim[name].setDirection(1);
+  serverAnim[name].play();
 },function(){
-  serverAnim['serve1'].setDirection(-1);
-  serverAnim['serve1'].play();
+  var name = ($(this).attr('id') === 'serve3')? 'serve3' : 'serve1';
+  serverAnim[name].setDirection(-1);
+  serverAnim[name].play();
 });
 
-$('#serve2-cover').hover(function(){
-  serverAnim['serve2'].setDirection(1);
-  serverAnim['serve2'].play();
+$('#serve2-cover,#serve4').hover(function(){
+  var name = ($(this).attr('id') === 'serve4')? 'serve4' : 'serve2';
+  serverAnim[name].setDirection(1);
+  serverAnim[name].playSegments([15,90],true)
 },function(){
-  serverAnim['serve2'].setDirection(-1);
-  serverAnim['serve2'].play();
+  var name = ($(this).attr('id') === 'serve4')? 'serve4' : 'serve2';
+  serverAnim[name].setDirection(-1);
+  serverAnim[name].playSegments([90,15],true)
 });
 
-$('#serve3').hover(function(){
-  serverAnim['serve3'].setDirection(1);
-  serverAnim['serve3'].play();
-},function(){
-  serverAnim['serve3'].setDirection(-1);
-  serverAnim['serve3'].play();
+var ser = new Waypoint({
+  element: document.getElementById('serve'),
+  handler: function() {
+    serverAnim['serve2'].playSegments([0,15],true)
+    serverAnim['serve4'].playSegments([0,15],true)
+  },
+  offset: '20%'
 });
-
-
-$('#serve4').hover(function(){
-  serverAnim['serve4'].setDirection(1);
-  serverAnim['serve4'].play();
-},function(){
-  serverAnim['serve4'].setDirection(-1);
-  serverAnim['serve4'].play();
-});
-
 
 </script><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">作品總集</h3><h4 class="subtitle">ワークスコレクション</h4></div><div class="row content-block-wrapper" id="cats"><div class="col-12 col-md-5 mb-5 mb-md-0"><div class="dialog-wrapper left"><img class="dialog small d-none d-md-inline-block" src="./images/cat-left-desktop-242a045ae29e82cd17428b2430cbf830.png" alt=""><img class="dialog small d-md-none" src="./images/cat-left-phone-876bdf779ae42eafa8858f59f49c227a.png" alt=""><a class="d-flex justify-content-center" href="http://"><img class="dialog big d-none d-md-inline-block" src="./images/cat-left-desktop-hover-88993098bdfd2daaca707a76b0a32567.png" alt=""><img class="dialog big d-md-none" src="./images/cat-left-phone-hover-254e3f4c0594c63ebc0353e51039dc17.png" alt=""></a></div><div id="cat-left"></div>網站作品案例</div><div class="col-md-2 d-none d-md-flex" id="cat-center"><img src="./images/有虎斑-71819e907470707a71fb7ad733a3c894.png" alt=""></div><div class="col-12 col-md-5 mb-5 mb-md-0"><div class="dialog-wrapper right"><img class="dialog small d-none d-md-inline-block" src="./images/cat-right-desktop-10b1f3f269b2e89a8e068e1061eedc95.png" alt=""><img class="dialog small d-md-none" src="./images/cat-right-phone-1eb7adce6a9936c83e5f9f82a4f36d45.png" alt=""><a class="d-flex justify-content-center" href="http://"><img class="dialog big d-none d-md-inline-block" src="./images/cat-right-desktop-hover-1ecc2f20a1618ab72128a9176cd57895.png" alt=""><img class="dialog big d-md-none" src="./images/cat-right-phone-hover-0074c5f84704976920427e0ae0d414e4.png" alt=""></a></div><div id="cat-right"></div>影音作品案例</div></div></div><style>#cats{
   text-align:center;
