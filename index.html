@@ -6,9 +6,9 @@
   src: url('./font/bebas_neue/BebasNeue-Regular.ttf'),
       url('./font/bebas_neue/BebasNeue-Regular.otf');
 }
-  </style><link rel="stylesheet" href="./slick/slick.css"><link rel="stylesheet" href="./slick/slick-theme.css"><style>.container {
+  </style><link rel="stylesheet" href="./slick/slick.css"><link rel="stylesheet" href="./slick/slick-theme.css"><style>/*.container {
   overflow: hidden;
-}
+}*/
 
 .row{
   margin-left:0;
@@ -300,7 +300,7 @@ showing.addEventListener('data_ready',function(){
         loop: false,
         prerender: true,
         autoplay: false,
-        path: './lottie/'+name+'/data.json',
+        path: './lottie/'+name+'-rwd/data.json',
     });
 
     anim.addEventListener('data_ready',function(){
@@ -348,9 +348,12 @@ function attachScroll(anim, contentid, speed) {
 
         anim.goToAndStop(val);
     }
-}*/</script><style>#opening-anim{
+}*/</script><style>/*body{
+  overflow:hidden;
+}*/
+#opening-anim{
   z-index: 100;
-  display:none;
+    display:none;
 }
 #opening-anim>div{
   position: absolute;
@@ -485,16 +488,16 @@ function attachScroll(anim, contentid, speed) {
   height:254px;
   min-height:164px;/*same as #about-content .company-info height*/
   background: rgba(255,255,255,0.6);
-  transition: all 0.4s;
+  transition: all 0.2s;
   opacity: 0;
   z-index:-1;
 }
 
 #about-content .company-info.ease-in .company-intro{
-    transition-delay:0.4s;
-    transform: translateY(-50%) scale(1);
-    opacity: 1;
-    z-index:2;
+  transition-delay:0.4s;
+  transform: translateY(-50%) scale(1);
+  opacity: 1;
+  z-index:2;
 }
 
 #play_button{
@@ -502,9 +505,12 @@ function attachScroll(anim, contentid, speed) {
   height:70px;
   width:70px;
   border-radius:50%;
-  background-image: repeating-linear-gradient( 114deg, black, black 1px, white 1px, white 5px);
   position:relative;
   cursor:pointer;
+}
+
+#play_button:hover{
+  background-image: repeating-linear-gradient( 114deg, black, black 1px, white 1px, white 5px);
 }
 
 #play_button:before{
@@ -546,7 +552,45 @@ function attachScroll(anim, contentid, speed) {
 $('#about-content .company-intro').mouseleave(function(){
   $('#about-content .company-info').removeClass('ease-in');
 });
-</script><div class="row section-wrapper" id="serve"><div class="section-title-wrapper"><h3 class="title">服務介紹</h3><h4 class="subtitle">サービス</h4></div><div class="col-12 d-flex align-items-center flex-column"><div class="row w-100"><div class="col-12 col-md-6 xxx"><div class="serve-anim" id="serve1"></div><div class="serve-anim" id="serve4"></div><span class="serve-anim" id="serve1-cover"></span></div><div class="col-12 col-md-6 xxx"><div class="serve-anim" id="serve2"></div><div class="serve-anim" id="serve3"></div><span class="serve-anim" id="serve2-cover"></span></div></div></div><div class="col-12 d-flex align-items-center flex-column"></div><div class="col-12 d-flex align-items-center flex-column"></div><div class="col-12 px-0" id="ads"><div class="row d-flex align-items-center flex-column"><div class="col-12 title-block"><span class="back-arrow"><svg class="w-100 h-100" width="68" height="68" xmlns="http://www.w3.org/2000/svg"><path d="M51 35.4H22.428l12.731 12.62L33.163 50 19.016 35.98l-.018.019L17 34.019l.02-.02-.02-.019 1.998-1.979.018.018L33.163 18l1.996 1.98L22.428 32.6H51v2.8zM0 34c0 18.747 15.252 34 34 34 18.748 0 34-15.253 34-34C68 15.252 52.748 0 34 0 15.252 0 0 15.252 0 34z" fill="#000" fill-rule="evenodd"></path></svg></span><span class="company-name d-none d-lg-block">紅紅數位</span><p>流程：所有廣告曝光及內容均以紅紅數位配合第三方監測軟體分析品牌現況調整相對應適合品牌之廣告形式。</p></div><div class="col-12 border-bold"><div class="row py-4 py-md-5"><div class="col-12 col-lg-6 d-flex flex-column align-items-center px-0 mb-4 mb-lg-0"><img src="./images/google-85800ffa0bd467362b5397d520271098.png" alt=""><div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Google 關鍵字</div><span class="sub-text">Google search marketing</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Google展示型廣告</div><span class="sub-text">Google Display Network</span></div></div></div></div><div class="col-12 col-lg-6 d-flex flex-column align-items-center px-0"><img src="./images/yahoo-6a0fe3fe7cb5ca0600b54af776449662.png" alt=""><div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Yahoo 關鍵字</div><span class="sub-text">Yahoo search marketing</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Yahoo 原生廣告</div><span class="sub-text">Yahoo Native Advertising</span></div></div></div></div></div></div><div class="col-12 border-bold mt-3"><div class="row py-4 py-md-5"><div class="col-12 d-flex justify-content-center"><img class="mx-3" src="./images/facebook-a2fb4ae08a347988b08ae3076f77e21f.png" alt="FB"><img class="mx-3" src="./images/IG-6e9a3b54b3092c1c8b21db37bd416174.png" alt="IG"></div><div class="col-12 col-md-4 d-flex flex-column align-items-center px-0"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">品牌曝光</div><span class="sub-text">Branding</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">互動廣告</div><span class="sub-text">Intrtaction</span></div></div></div><div class="col-12 col-md-4 d-flex flex-column align-items-center px-0"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">導購廣告</div><span class="sub-text">ROAS</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">點擊廣告 </div><span class="sub-text">Website</span></div></div></div><div class="col-12 col-md-4 d-flex flex-column align-items-center px-0"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">安裝下載</div><span class="sub-text">APP</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">讚廣告　</div><span class="sub-text">Like</span></div></div></div></div></div><div class="col-12 border-bold mt-3"><div class="row py-4 py-md-5"><div class="col-12 d-flex justify-content-center align-items-center flex-column flex-md-row"><img class="mr-0 mr-md-4" src="./images/youtube-ff90d41b681f65164a06aebde851c9a9.svg" alt="youtube"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">影音觀看</div><span class="sub-text">CPV</span></div></div></div></div></div></div></div></div><style>#serve .xxx{
+</script><div class="row section-wrapper" id="serve"><div class="section-title-wrapper"><h3 class="title">服務介紹</h3><h4 class="subtitle">サービス</h4></div><div class="col-12 d-flex align-items-center flex-column" id="serve-main"><div class="row w-100"><div class="col-12 col-md-6 window left"><div class="serve-anim" id="serve1"></div><div class="serve-anim" id="serve4"></div><span class="serve-anim" id="serve1-cover"></span></div><div class="col-12 col-md-6 window"><div class="serve-anim" id="serve2"></div><div class="serve-anim" id="serve3"></div><span class="serve-anim" id="serve2-cover"></span></div></div><div class="col-12 serve-slide" id="digital-prod"><img class="back-arrow" src="./images/back-arrow-313e4931598ac7f747cb0c1a4a57f872.svg" alt="" srcset=""></div><div class="col-12 serve-slide px-0" id="creative"><img class="w-100 d-none d-md-block" src="./images/creative-bg-e08b40556b722ddea17be5a199e7ee5c.png" alt="" srcset=""><img class="w-100 d-block d-md-none" src="./images/creative-bg-phone-b333e736e56a45fb965f3fb70b47f6c7.png" alt="" srcset=""><div class="content-wrapper row h-50"><div class="content col-12 col-md-6 col-lg-7" id="brand"><span class="zh">品牌<br>再造　</span><span class="spilt"></span><span class="en">Branding</span></div><div class="content col-12 col-md-6 col-lg-5" id="social"><span class="zh">社群<br>媒體　</span><span class="spilt"></span><span class="en">Social<br>Media　</span></div><div class="content col-12 col-md-6" id="media"><span class="zh">影音<br><span class="d-md-none">　</span>內容<span class="d-none d-md-inline-block">　</span></span><span class="spilt"></span><span class="en text-center text-md-left"><div id="btn-video"><a class="btn" href="./media.html"><span class="mb-4 hand"><svg width="20" height="27" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="a" d="M20 27V0H0v27z"></path></defs><g transform="rotate(-180 10 13.5)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><path d="M18.779 26.255a1 1 0 0 1-1.156.725 1.02 1.02 0 0 1-.719-1.204l1.169-4.729v-9.93c0-.406-.207-.656-.45-.737-.124-.044-.256-.094-.401-.094-.124 0-.256.05-.38.094-.246.081-.44.331-.462.716v1.112c0 .55-.42.976-.94.976a.973.973 0 0 1-.987-.976V9.652c0-.407-.185-.654-.46-.77a1.46 1.46 0 0 0-.38-.062c-.135 0-.267.032-.378.063-.238.115-.441.362-.463.737v2.588a.963.963 0 1 1-1.927 0v-2.91c0-.425-.194-.684-.46-.79a1.178 1.178 0 0 0-.759 0c-.258.106-.44.344-.47.737v2.964c0 .55-.433.975-.966.975-.521 0-.944-.426-.944-.976V2.785c0-.406-.203-.666-.48-.769a.886.886 0 0 0-.38-.075.965.965 0 0 0-.38.075c-.274.103-.459.363-.459.769v15.593c0 .563-.44.957-.965.957a.944.944 0 0 1-.962-.957V14.11c-.021-.385-.197-.654-.462-.729-.102-.071-.235-.08-.38-.08-.123 0-.277.009-.379.08-.265.094-.463.344-.463.75v4.883c0 1.913.074 2.006 1.046 3.282l.277.365 2.103 2.763a.986.986 0 0 1-.175 1.363c-.42.322-1.033.26-1.342-.178l-2.112-2.763-.278-.353C.093 21.704 0 21.579 0 19.012v-4.881c0-1.332.74-2.204 1.671-2.579.37-.134.759-.219 1.107-.219.278 0 .552.044.842.157V2.785c0-1.35.728-2.204 1.66-2.579C5.657.053 6.02 0 6.385 0c.38 0 .75.053 1.107.206.934.375 1.662 1.229 1.662 2.579v3.832c.275-.081.574-.103.851-.103.358 0 .737.053 1.107.178.327.156.666.372.922.644.176-.116.318-.178.49-.241a2.88 2.88 0 0 1 1.089-.228c.367 0 .758.084 1.095.228.647.272 1.19.75 1.467 1.457.349-.126.716-.22 1.046-.22.379 0 .758.094 1.085.229.975.394 1.693 1.247 1.693 2.557v10.036a.833.833 0 0 1-.043.247l-1.178 4.854z" fill="#231815" mask="url(#b)"></path></g></svg></span></a><spa class="ml-3">影音傳送</spa></div>Video</span><style>#btn-video{
+  /* 影音傳送: */
+  font-family: NotoSansCJKtc-Light;
+  font-size: 12px;
+  color: #F29600;
+}
+#btn-video .btn{
+  /* 按鈕: */
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background: #F29600;
+  border: 6px solid #000000;
+  box-shadow: 0 3px 2px 0 rgba(0,0,0,0.50);
+  position:relative;
+}
+
+#btn-video .btn:active{
+  box-shadow:inset 0 0 7px 0px black;
+}
+
+#btn-video .btn:after{
+  content:'';
+  position:absolute;
+  top: -2px;
+  left: -2px;
+  width:inherit;
+  height:inherit;
+  border-radius:50%;
+  background-image: repeating-linear-gradient( 114deg, black, black 1px, white 1px, white 5px);
+  z-index: -1;
+}
+
+#btn-video .hand{
+  position: absolute;
+  left: 3px;
+  top: -50px;
+  animation: floatY 0.8s ease-in-out infinite alternate;
+}</style></div><div class="content col-12 col-md-6" id="project"><span class="zh">專案<br><span class="d-md-none">　</span>內容<span class="d-none d-md-inline-block">　</span></span><span class="spilt"></span><span class="en">Campaign</span></div></div><span class="company-name">紅紅數位</span><img class="back-arrow" src="./images/back-arrow-313e4931598ac7f747cb0c1a4a57f872.svg" alt="" srcset=""></div><div class="col-12 serve-slide" id="ads"><div class="row d-flex align-items-center flex-column"><div class="col-12 title-block"><img class="back-arrow" src="./images/back-arrow-313e4931598ac7f747cb0c1a4a57f872.svg" alt="" srcset=""><span class="company-name d-none d-lg-block">紅紅數位</span><p>流程：所有廣告曝光及內容均以紅紅數位配合第三方監測軟體分析品牌現況調整相對應適合品牌之廣告形式。</p></div><div class="col-12 border-bold"><div class="row py-4 py-md-5"><div class="col-12 col-lg-6 d-flex flex-column align-items-center px-0 mb-4 mb-lg-0"><img src="./images/google-85800ffa0bd467362b5397d520271098.png" alt=""><div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Google 關鍵字</div><span class="sub-text">Google search marketing</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Google展示型廣告</div><span class="sub-text">Google Display Network</span></div></div></div></div><div class="col-12 col-lg-6 d-flex flex-column align-items-center px-0"><img src="./images/yahoo-6a0fe3fe7cb5ca0600b54af776449662.png" alt=""><div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Yahoo 關鍵字</div><span class="sub-text">Yahoo search marketing</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">Yahoo 原生廣告</div><span class="sub-text">Yahoo Native Advertising</span></div></div></div></div></div></div><div class="col-12 border-bold mt-3"><div class="row py-4 py-md-5"><div class="col-12 d-flex justify-content-center"><img class="mx-3" src="./images/facebook-a2fb4ae08a347988b08ae3076f77e21f.png" alt="FB"><img class="mx-3" src="./images/IG-6e9a3b54b3092c1c8b21db37bd416174.png" alt="IG"></div><div class="col-12 col-md-4 d-flex flex-column align-items-center px-0"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">品牌曝光</div><span class="sub-text">Branding</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">互動廣告</div><span class="sub-text">Intrtaction</span></div></div></div><div class="col-12 col-md-4 d-flex flex-column align-items-center px-0"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">導購廣告</div><span class="sub-text">ROAS</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">點擊廣告 </div><span class="sub-text">Website</span></div></div></div><div class="col-12 col-md-4 d-flex flex-column align-items-center px-0"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">安裝下載</div><span class="sub-text">APP</span></div></div><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">讚廣告　</div><span class="sub-text">Like</span></div></div></div></div></div><div class="col-12 border-bold mt-3"><div class="row py-4 py-md-5"><div class="col-12 d-flex justify-content-center align-items-center flex-column flex-md-row"><img class="mr-0 mr-md-4" src="./images/youtube-ff90d41b681f65164a06aebde851c9a9.svg" alt="youtube"><div class="item d-flex align-items-center my-2 my-md-4"><img src="./images/sword-07c3aeb8f527f46ce6ca387752f65e8a.png" alt="手裡劍"><div class="text-wrapper"><div class="main-text">影音觀看</div><span class="sub-text">CPV</span></div></div></div></div></div></div></div></div></div><style>#serve .window{
   padding-bottom: 50%;
   position:relative;
   overflow:hidden;
@@ -557,6 +601,30 @@ $('#about-content .company-intro').mouseleave(function(){
   left:0;
   width:99%;
 }
+
+@media only screen and (max-width: 768px) {
+    #serve .window{
+      padding-bottom: 100%;
+    }
+    #serve .window.left{
+      margin-left: 2px;
+      margin-bottom: 8px;
+    }
+}
+
+#serve-main{
+  position: relative;
+  transition: all 0.3s;
+}
+
+#serve-main.slide-left{
+  transform: translateX(-100vw);
+}
+
+#serve-main.slide-right{
+  transform: translateX(100vw);
+}
+
 #serve1-cover{
   padding-bottom: 38%;
 }
@@ -569,8 +637,6 @@ $('#about-content .company-intro').mouseleave(function(){
   width: 103%;
   padding-bottom: 22%;
   transform: rotate(-12.2deg);
-  /*bottom: -37%;
-  margin-bottom: 16px;*/
 }
 
 #serve2-cover{
@@ -586,14 +652,211 @@ $('#about-content .company-intro').mouseleave(function(){
   padding-bottom: 7%;
   transform: rotate(3.5deg);
 }
-/*ads*/
 
 #serve .back-arrow{
   height:64px;
   width:64px;
   background:white;
   border-radius:50%;
+  position: absolute;
+  top: 0;
+  cursor:pointer;
 }
+
+/*digital-prod*/
+#digital-prod,
+#creative,
+#ads{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 5px;
+}
+#digital-prod,
+#creative{
+  transform: translateX(-100vw);
+  background:white;
+}
+
+#digital-prod.z-index-front,
+#creative.z-index-front{
+  z-index:10;
+}
+#digital-prod>svg,
+#creative{
+  border: 11px solid black;
+}
+
+#digital-prod .back-arrow{
+  right:3px;
+  transform: translateX(42%) rotate(180deg);
+}
+
+#creative .back-arrow{
+  top: -11px;
+  right: -4px;
+  transform: translateX(50%) rotate(180deg);
+}
+
+#creative .company-name,
+#ads .company-name{
+  background: #000000;
+  /* 紅紅數位: */
+  font-family: .SFNSDisplay;
+  font-size: 30px;
+  color: #F5A623;
+  width: 198px;
+  height: 198px;
+  /*same with width*/
+  line-height: 198px;
+  position: absolute;
+  border-radius: 50%;
+  writing-mode: vertical-lr;
+  text-align: center;
+}
+
+#creative .company-name{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#creative .content-wrapper{
+  position:absolute;
+  top:0;
+  width:100%;
+  color: #000000;
+}
+
+#creative .content{
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#creative .content .zh{
+  font-family: NotoSansCJKtc-Bold;
+  font-size: 60px;
+  line-height:65px;
+}
+
+#creative .content .spilt{
+  height: 150px;
+  width: 1px;
+  background: black;
+  display: inline-block;
+  transform: rotate(26deg);
+  margin-right: 30px;
+}
+
+#creative .content .en{
+  /* Video: */
+  font-family: .SFNSDisplay;
+  font-size: 50px;
+  line-height: 55px;
+}
+
+@media only screen and (max-width: 1140px) {
+  #creative .content .zh {
+      font-size: 3.5vw;
+      line-height: 4vw;
+  }
+  #creative .content .spilt {
+      height: 100px;
+  }
+  #creative .content .en {
+      font-size: 3vw;
+      line-height: 3.5vw;
+  }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px){
+  #creative .company-name{
+    width: 158px;
+    height: 158px;
+    line-height: 158px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+    #creative .company-name{
+      left: initial;
+      right: 0;
+      transform: translate(0%,-50%);
+      line-height: 160px;
+      width: 98px;
+      border-radius: 98px 0 0 98px;
+    }
+
+    #creative .content{
+      height:50%;
+    }
+    #creative content:not(#media){
+      order:1;
+    }
+    #creative #media.content{
+      order:2;
+    }
+
+    #creative #media.content .spilt,
+    #creative #project.content .spilt{
+      transform: rotate(-26deg);
+    }
+    #creative #brand.content{
+      justify-content: flex-end;
+      padding-bottom: 15%;
+    }
+    #creative #media.content{
+      justify-content: flex-end;
+      padding-top: 15%;
+    }
+
+    #creative #social.content,
+    #creative #project.content{
+      justify-content: flex-start;
+    }
+
+    #creative .content .zh {
+      font-size: 8vw;
+      line-height: 9vw;
+    }
+
+    #creative .content .en {
+      font-size: 5vw;
+      line-height: 5.5vw;
+    }
+
+    #creative .content .spilt {
+      margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    /*#creative .content .zh {
+      font-size: 26px;
+      line-height: 31px;
+    }
+
+    #creative .content .en {
+      font-size: 21px;
+      line-height: 22px;
+    }*/
+
+     #creative .content .spilt {
+      height: 80px;
+      margin: 0 12px;
+    }
+}
+
+/*ads*/
+#ads{
+  width: 100%;
+  transform: translateX(100vw);
+}
+
 #ads .title-block{
   /* 流程：所有廣告曝光及內容均以紅紅數位配合: */
   background:black;
@@ -604,9 +867,8 @@ $('#about-content .company-intro').mouseleave(function(){
   position:relative;
 }
 #ads .back-arrow{
-  position:absolute;
-  top:0;
-  left:-34px;
+  left:0;
+  transform: translateX(-44%);
 }
 #ads .title-block p{
   max-width:785px;
@@ -619,24 +881,10 @@ $('#about-content .company-intro').mouseleave(function(){
 }
 
 #ads .company-name{
-  /* Oval: */
-  background: #000000;
-  /* 紅紅數位: */
-  font-family: .SFNSDisplay;
-  font-size: 30px;
-  color: #F5A623;
-  width: 198px;
-  height: 198px;
-  position: absolute;
   top: 0;
   right: -99px;
-  border-radius: 50%;
-  writing-mode: vertical-lr;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
+
 #ads .item .text-wrapper{
   text-align: left;
   margin-left:16px;
@@ -671,14 +919,21 @@ $('#about-content .company-intro').mouseleave(function(){
     font-size:14px;
   }
 }
-</style><script>var serverAnim = {};
+</style><script>  var digitalProd = lottie.loadAnimation({
+      container: document.querySelector('#digital-prod'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: './lottie/DIGITAL'+pathPostfix+'/data.json',
+  });
+
+var serverAnim = {};
 ['serve1','serve2','serve3','serve4'].forEach(function(name,index) {
   var wrapper = document.querySelector('#'+name);
     serverAnim[name] = lottie.loadAnimation({
       container: wrapper,
       renderer: 'svg',
       loop: false,
-      prerender: true,
       autoplay: false,
       path: './lottie/'+name+'/data.json',
   });
@@ -697,22 +952,59 @@ $('#serve1-cover,#serve3').hover(function(){
 $('#serve2-cover,#serve4').hover(function(){
   var name = ($(this).attr('id') === 'serve4')? 'serve4' : 'serve2';
   serverAnim[name].setDirection(1);
-  serverAnim[name].playSegments([15,90],true)
+  serverAnim[name].playSegments([15,21],true)
 },function(){
   var name = ($(this).attr('id') === 'serve4')? 'serve4' : 'serve2';
   serverAnim[name].setDirection(-1);
-  serverAnim[name].playSegments([90,15],true)
+  serverAnim[name].playSegments([21,15],true)
 });
 
 var ser = new Waypoint({
   element: document.getElementById('serve'),
   handler: function() {
-    serverAnim['serve2'].playSegments([0,15],true)
-    serverAnim['serve4'].playSegments([0,15],true)
+    serverAnim['serve2'].playSegments([0,15],false);
+    serverAnim['serve4'].playSegments([0,15],false);
+    serverAnim['serve2'].goToAndStop(15,true);
+    serverAnim['serve4'].goToAndStop(15,true);
+    ser.disable();
   },
   offset: '20%'
 });
 
+$('#serve1-cover').click(function(){
+  var slideHeight = $('#creative').height();
+  var wrapper = $('#serve-main');
+  wrapper.css('height',slideHeight);
+  wrapper.addClass('slide-right');
+  $('#creative').addClass('z-index-front');
+});
+
+$('#serve2-cover').click(function(){
+  var slideHeight = $('#ads').height();
+  var wrapper = $('#serve-main');
+  wrapper.css('height',slideHeight);
+  wrapper.addClass('slide-left');
+});
+
+$('#serve4').click(function(){
+  var slideHeight = $('#digital-prod').height();
+  var wrapper = $('#serve-main');
+  wrapper.css('height',slideHeight);
+  wrapper.addClass('slide-right');
+  digitalProd.play();
+  $('#digital-prod').addClass('z-index-front');
+});
+
+$('#serve .back-arrow').click(function(){
+  var id = $(this).closest('.serve-slide').attr('id');
+  slideDirection = id == 'ads' ? 'slide-left' : 'slide-right';
+  var wrapper = $('#serve-main');
+  wrapper.removeClass(slideDirection);
+  wrapper.css('height','initial');
+  if(slideDirection === 'slide-right'){
+    $('#'+id).toggleClass('z-index-front');
+  }
+});
 </script><div class="row section-wrapper"><div class="section-title-wrapper"><h3 class="title">作品總集</h3><h4 class="subtitle">ワークスコレクション</h4></div><div class="row content-block-wrapper" id="cats"><div class="col-12 col-md-5 mb-5 mb-md-0"><div class="dialog-wrapper left"><img class="dialog small d-none d-md-inline-block" src="./images/cat-left-desktop-242a045ae29e82cd17428b2430cbf830.png" alt=""><img class="dialog small d-md-none" src="./images/cat-left-phone-876bdf779ae42eafa8858f59f49c227a.png" alt=""><a class="d-flex justify-content-center" href="http://"><img class="dialog big d-none d-md-inline-block" src="./images/cat-left-desktop-hover-88993098bdfd2daaca707a76b0a32567.png" alt=""><img class="dialog big d-md-none" src="./images/cat-left-phone-hover-254e3f4c0594c63ebc0353e51039dc17.png" alt=""></a></div><div id="cat-left"></div>網站作品案例</div><div class="col-md-2 d-none d-md-flex" id="cat-center"><img src="./images/有虎斑-71819e907470707a71fb7ad733a3c894.png" alt=""></div><div class="col-12 col-md-5 mb-5 mb-md-0"><div class="dialog-wrapper right"><img class="dialog small d-none d-md-inline-block" src="./images/cat-right-desktop-10b1f3f269b2e89a8e068e1061eedc95.png" alt=""><img class="dialog small d-md-none" src="./images/cat-right-phone-1eb7adce6a9936c83e5f9f82a4f36d45.png" alt=""><a class="d-flex justify-content-center" href="http://"><img class="dialog big d-none d-md-inline-block" src="./images/cat-right-desktop-hover-1ecc2f20a1618ab72128a9176cd57895.png" alt=""><img class="dialog big d-md-none" src="./images/cat-right-phone-hover-0074c5f84704976920427e0ae0d414e4.png" alt=""></a></div><div id="cat-right"></div>影音作品案例</div></div></div><style>#cats{
   text-align:center;
 }
