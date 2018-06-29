@@ -299,12 +299,12 @@ showing.addEventListener('data_ready',function(){
   });
 });
 
-if(isFirstView){
-  loadIntroAnim();
+var introAnim = loadIntroAnim();
+
+if(!isFirstView){
+  $('#intro-anim').hide().addClass('normal');
 }
-else{
-  $('#intro-anim').addClass('d-none');
-}
+
 
 function loadIntroAnim(){
   var wrapper = document.querySelector('#intro-anim');
@@ -326,16 +326,19 @@ function loadIntroAnim(){
         var delta = Math.max(-1, Math.min(1,event.deltaY));
         
         if(delta>=0){
-          return
+          return;
         }
         else if(percentage>=100){
-          attachScroll(introAnim, wrapper, 20);
+          scrollAnim();
           $(this).off('mousewheel');
-          return
+          return;
         }
         percentage+=Math.abs(delta);
         $('#intro-anim').css('transform','translateY('+(100-percentage)+'%)')
       });
+    }
+    else{
+      scrollAnim();
     }
   });
   
@@ -343,26 +346,33 @@ function loadIntroAnim(){
     $('body').css('overflow','');
     $('#intro-anim').fadeOut();
   });
+
+  return introAnim;
+}
+
+function scrollAnim(){
+  var wrapper = document.querySelector('#intro-anim');
+  attachScroll(introAnim, wrapper, 20);
 }
 
 function attachScroll(anim, contentid, speed) {
-
+    anim.percentage = 0;
     var val = 0;
     var totalDuration = anim.totalFrames/anim.frameRate*1000;
     $('#intro-anim').mousewheel(function(event) {
-        
+        event.preventDefault();
         var delta = Math.max(-1, Math.min(1,event.deltaY));
         if (delta < 0) {
-            if (val < totalDuration) {
-                val += (Math.abs(event.deltaY))*speed;
+            if (anim.percentage < totalDuration) {
+                anim.percentage += (Math.abs(event.deltaY))*speed;
             }
         }else {
-            if (val > 0) {
-                val -= (Math.abs(event.deltaY))*speed;
+            if (anim.percentage > 0) {
+                anim.percentage -= (Math.abs(event.deltaY))*speed;
             }
         }
         if(val >= 0){//倒轉播放完畢也會觸發complete event,所以卡一個0在這邊，到frame0就不播放了
-          anim.goToAndStop(val);
+          anim.goToAndStop(anim.percentage);
         }
     });
 
@@ -371,6 +381,7 @@ function attachScroll(anim, contentid, speed) {
 }
 #intro-anim{
   position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -382,6 +393,9 @@ function attachScroll(anim, contentid, speed) {
   overflow:hidden;
   transition: transform 0.05s;
   transform: translateY(100%);
+}
+#intro-anim.normal{
+  transform: translateY(0);
 }
 #intro-anim>svg{
   position: absolute;
@@ -583,6 +597,12 @@ function attachScroll(anim, contentid, speed) {
 $('#about-content .company-intro').mouseleave(function(){
   $('#about-content .company-info').removeClass('ease-in');
 });
+
+$('#play_button').click(function(){
+  $('#intro-anim').fadeIn();
+  introAnim.percentage = 0;
+  introAnim.goToAndStop(0)
+});
 </script><div class="row section-wrapper" id="serve"><div class="section-title-wrapper"><h3 class="title">服務介紹</h3><h4 class="subtitle">サービス</h4></div><div class="col-12 d-flex align-items-center flex-column" id="serve-main"><div class="row w-100"><div class="col-12 col-md-6 window left"><div class="serve-anim" id="serve1"></div><div class="serve-anim" id="serve4"></div><span class="serve-anim" id="serve1-cover"></span></div><div class="col-12 col-md-6 window"><div class="serve-anim" id="serve2"></div><div class="serve-anim" id="serve3"></div><span class="serve-anim" id="serve2-cover"></span></div></div><div class="col-12 serve-slide" id="digital-prod"><img class="back-arrow" src="./images/back-arrow-313e4931598ac7f747cb0c1a4a57f872.svg" alt="" srcset=""></div><div class="col-12 serve-slide px-0" id="creative"><img class="w-100 d-none d-md-block" src="./images/creative-bg-e08b40556b722ddea17be5a199e7ee5c.png" alt="" srcset=""><img class="w-100 d-block d-md-none" src="./images/creative-bg-phone-b333e736e56a45fb965f3fb70b47f6c7.png" alt="" srcset=""><div class="content-wrapper row h-50"><div class="content col-12 col-md-6 col-lg-7" id="brand"><span class="zh">品牌<br>再造　</span><span class="spilt"></span><span class="en">Branding</span></div><div class="content col-12 col-md-6 col-lg-5" id="social"><span class="zh">社群<br>媒體　</span><span class="spilt"></span><span class="en">Social<br>Media　</span></div><div class="content col-12 col-md-6" id="media"><span class="zh">影音<br><span class="d-md-none">　</span>內容<span class="d-none d-md-inline-block">　</span></span><span class="spilt"></span><span class="en text-center text-md-left"><div id="btn-video"><a class="btn" href="./media.html"><span class="mb-4 hand"><svg width="20" height="27" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="a" d="M20 27V0H0v27z"></path></defs><g transform="rotate(-180 10 13.5)" fill="none" fill-rule="evenodd"><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><path d="M18.779 26.255a1 1 0 0 1-1.156.725 1.02 1.02 0 0 1-.719-1.204l1.169-4.729v-9.93c0-.406-.207-.656-.45-.737-.124-.044-.256-.094-.401-.094-.124 0-.256.05-.38.094-.246.081-.44.331-.462.716v1.112c0 .55-.42.976-.94.976a.973.973 0 0 1-.987-.976V9.652c0-.407-.185-.654-.46-.77a1.46 1.46 0 0 0-.38-.062c-.135 0-.267.032-.378.063-.238.115-.441.362-.463.737v2.588a.963.963 0 1 1-1.927 0v-2.91c0-.425-.194-.684-.46-.79a1.178 1.178 0 0 0-.759 0c-.258.106-.44.344-.47.737v2.964c0 .55-.433.975-.966.975-.521 0-.944-.426-.944-.976V2.785c0-.406-.203-.666-.48-.769a.886.886 0 0 0-.38-.075.965.965 0 0 0-.38.075c-.274.103-.459.363-.459.769v15.593c0 .563-.44.957-.965.957a.944.944 0 0 1-.962-.957V14.11c-.021-.385-.197-.654-.462-.729-.102-.071-.235-.08-.38-.08-.123 0-.277.009-.379.08-.265.094-.463.344-.463.75v4.883c0 1.913.074 2.006 1.046 3.282l.277.365 2.103 2.763a.986.986 0 0 1-.175 1.363c-.42.322-1.033.26-1.342-.178l-2.112-2.763-.278-.353C.093 21.704 0 21.579 0 19.012v-4.881c0-1.332.74-2.204 1.671-2.579.37-.134.759-.219 1.107-.219.278 0 .552.044.842.157V2.785c0-1.35.728-2.204 1.66-2.579C5.657.053 6.02 0 6.385 0c.38 0 .75.053 1.107.206.934.375 1.662 1.229 1.662 2.579v3.832c.275-.081.574-.103.851-.103.358 0 .737.053 1.107.178.327.156.666.372.922.644.176-.116.318-.178.49-.241a2.88 2.88 0 0 1 1.089-.228c.367 0 .758.084 1.095.228.647.272 1.19.75 1.467 1.457.349-.126.716-.22 1.046-.22.379 0 .758.094 1.085.229.975.394 1.693 1.247 1.693 2.557v10.036a.833.833 0 0 1-.043.247l-1.178 4.854z" fill="#231815" mask="url(#b)"></path></g></svg></span></a><spa class="ml-3">影音傳送</spa></div>Video</span><style>#btn-video{
   /* 影音傳送: */
   font-family: NotoSansCJKtc-Light;
@@ -707,12 +727,14 @@ $('#about-content .company-intro').mouseleave(function(){
 #creative{
   transform: translateX(-100vw);
   background:white;
-  visibility: hidden;
+  /*visibility: hidden;*/
+  display:none;
 }
 
 #digital-prod.z-index-front,
 #creative.z-index-front{
   visibility: visible;
+  display:block;
   z-index:10;
 }
 #digital-prod>svg,
@@ -868,16 +890,6 @@ $('#about-content .company-intro').mouseleave(function(){
 }
 
 @media only screen and (max-width: 576px) {
-    /*#creative .content .zh {
-      font-size: 26px;
-      line-height: 31px;
-    }
-
-    #creative .content .en {
-      font-size: 21px;
-      line-height: 22px;
-    }*/
-
      #creative .content .spilt {
       height: 80px;
       margin: 0 12px;
