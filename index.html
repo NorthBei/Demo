@@ -6,7 +6,25 @@
   src: url('./font/bebas_neue/BebasNeue-Regular.ttf'),
       url('./font/bebas_neue/BebasNeue-Regular.otf');
 }
-  </style><link rel="stylesheet" href="./slick/slick.css"><link rel="stylesheet" href="./slick/slick-theme.css"><style>/*.container {
+/**{
+  font-family: 'Noto Sans';
+}*/
+  </style><link rel="stylesheet" href="./slick/slick.css"><link rel="stylesheet" href="./slick/slick-theme.css"><style>@font-face {
+  font-family: Goudy;
+  src: url('./font/Goudy Old Style Regular.ttf');
+}
+
+@font-face {
+  font-family: HanWangMingBlack;
+  src: url('./font/HanWangMingBlack.ttf');
+}
+
+@font-face {
+  font-family: HiraginoSans-W3;
+  src: url('./font/Hiragino-Sans-GB-W3.otf');
+}
+
+/*.container {
   overflow: hidden;
 }*/
 
@@ -34,7 +52,7 @@
 .section-title-wrapper .title{
   font-size: 36px;
   margin-bottom: 0;
-  font-family: .SFNSDisplay;
+  font-family: HanWangMingBlack;
 }
 .section-title-wrapper .subtitle{
   font-size: 20px;
@@ -61,6 +79,7 @@
 
 .group-member .member-name{
   font-size:18px;
+  font-weight: bold;
 }
 
 .group-member .member-photo-wrapper{
@@ -321,25 +340,13 @@ function loadIntroAnim(){
     if(isPortrait){$('#intro-anim').addClass('phone')}
     //attachScroll(introAnim, wrapper, 40);
     if(isFirstView){
-      var percentage = 0;
       $('body').css('overflow','hidden').mousewheel(function(event) {
-        var delta = Math.max(-1, Math.min(1,event.deltaY));
-        
-        if(delta>=0){
-          return;
-        }
-        else if(percentage>=100){
-          scrollAnim();
-          $(this).off('mousewheel');
-          return;
-        }
-        percentage+=Math.abs(delta);
-        $('#intro-anim').css('transform','translateY('+(100-percentage)+'%)')
+        $('#intro-anim').css('transform','translateY(0%)');
+        $(this).off('mousewheel');
       });
     }
-    else{
-      scrollAnim();
-    }
+    
+    scrollAnim();
   });
   
   introAnim.addEventListener('complete',function(e){
@@ -352,7 +359,7 @@ function loadIntroAnim(){
 
 function scrollAnim(){
   var wrapper = document.querySelector('#intro-anim');
-  attachScroll(introAnim, wrapper, 20);
+  attachScroll(introAnim, wrapper, 100);
 }
 
 function attachScroll(anim, contentid, speed) {
@@ -364,23 +371,19 @@ function attachScroll(anim, contentid, speed) {
         var delta = Math.max(-1, Math.min(1,event.deltaY));
         if (delta < 0) {
             if (anim.percentage < totalDuration) {
-                anim.percentage += (Math.abs(event.deltaY))*speed;
+                anim.percentage += speed;//(Math.abs(event.deltaY))*speed;
             }
         }else {
             if (anim.percentage > 0) {
-                anim.percentage -= (Math.abs(event.deltaY))*speed;
+                anim.percentage -= speed;//(Math.abs(event.deltaY))*speed;
             }
         }
         if(val >= 0){//倒轉播放完畢也會觸發complete event,所以卡一個0在這邊，到frame0就不播放了
           anim.goToAndStop(anim.percentage);
-        }
+        } 
     });
 
-}</script><style>#intro-anim{  
-  /*display:none;*/
-}
-#intro-anim{
-  position: absolute;
+}</script><style>#intro-anim{
   position: fixed;
   top: 0;
   left: 0;
@@ -391,7 +394,7 @@ function attachScroll(anim, contentid, speed) {
   max-height:100vh;
   max-width:100vw;
   overflow:hidden;
-  transition: transform 0.05s;
+  transition: transform 0.3s;
   transform: translateY(100%);
 }
 #intro-anim.normal{
@@ -792,7 +795,7 @@ $('#play_button').click(function(){
 }
 
 #creative .content .zh{
-  font-family: NotoSansCJKtc-Bold;
+  font-family: HanWangMingBlack;
   font-size: 60px;
   line-height:65px;
 }
@@ -807,8 +810,7 @@ $('#play_button').click(function(){
 }
 
 #creative .content .en{
-  /* Video: */
-  font-family: .SFNSDisplay;
+  font-family: Goudy;
   font-size: 50px;
   line-height: 55px;
 }
@@ -1030,10 +1032,8 @@ $('#serve2-cover,#serve4').hover(function(){
 var ser = new Waypoint({
   element: document.getElementById('serve'),
   handler: function() {
-    serverAnim['serve2'].playSegments([0,15],false);
-    serverAnim['serve4'].playSegments([0,15],false);
-    serverAnim['serve2'].goToAndStop(15,true);
-    serverAnim['serve4'].goToAndStop(15,true);
+    serverAnim['serve2'].playSegments([0,15],true);
+    serverAnim['serve4'].playSegments([0,15],true);
     ser.disable();
   },
   offset: '20%'
