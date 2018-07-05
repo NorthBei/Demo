@@ -47,7 +47,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height:100vh;
+  min-height:75vh;
   text-align: center;
   /*border:1px solid red;*/
   padding: 100px 0;
@@ -200,7 +200,7 @@
       $('.scrollbar').addClass('open');
     },
     offset: function() {
-      return (window.innerHeight/2-this.element.clientHeight/2);
+      return (window.innerHeight/2-this.element.clientHeight/2)+window.innerHeight*0.1;
     }
   })
 });
@@ -1298,6 +1298,7 @@ var cat_anim_left = lottie.loadAnimation({
 }
 .corpor-list-page{
   display:flex;
+  outline:none;
 }
 
 .corpor-list-col{
@@ -1380,7 +1381,8 @@ var cat_anim_left = lottie.loadAnimation({
 }
 
 .calligraphy-react{
-    height: 90vh;
+  width: 100vw;
+  padding-bottom: 57%;
 }
 .fullwidth-rect {
     position: absolute;
@@ -1432,18 +1434,12 @@ var cat_anim_left = lottie.loadAnimation({
     max-height: 430px;
     min-height: 246px;
 }
-
-@media only screen and (max-width: 576px) {
-  .calligraphy-react{
-    height: 72vw;
-  }
-}
 </style><script>var calligraphTop = new Waypoint({
   element: document.getElementById('calligraphy-top'),
   handler: function() {
     $('#calligraphy-top .growth-rect').addClass('grown');
   },
-  offset: '20%'
+  offset: '40%'
 });
 
 var calligraphyBottom = new Waypoint({
@@ -1451,7 +1447,7 @@ var calligraphyBottom = new Waypoint({
   handler: function() {
     $('#calligraphy-bottom .growth-rect').addClass('grown');
   },
-  offset: '20%'
+  offset: '40%'
 });
 </script><div class="row section-wrapper" id="contact"><div class="section-title-wrapper"><h3 class="title">聯絡我們</h3><h4 class="subtitle">お問い合わせ</h4></div><div class="row content-block-wrapper d-flex justify-content-center"><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-phone-9c59d5d07b67751e46d609d8cd32b8e9.png"></div><p>TEL：+886-2-3393-1393</p></div><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-map-pin-13c0b2b4143eddb00567a8048925d0f4.png"></div><p>〒 台北市中正區金山北路1號12F</p><small>12F., No.1, Jinshan N. Rd., Zhongzheng Dist., Taipei City 100, Taiwan (R.O.C.)</small></div><div class="col-md-3 contact-info d-flex align-items-center flex-column text-center"><div class="contact-img-wrapper d-flex align-items-center justify-content-center"><img src="./images/contact-mail-a9244a2c6be53fb6fa0fe2dd19d14bd1.png"></div><p>Email：service@sqrhome.com    </p></div></div></div></div><style>#footer{
     margin-top: 80px;
